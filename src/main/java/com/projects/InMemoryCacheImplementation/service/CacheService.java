@@ -3,10 +3,7 @@ package com.projects.InMemoryCacheImplementation.service;
 import com.projects.InMemoryCacheImplementation.entity.Cache;
 import org.springframework.stereotype.Service;
 
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CacheService<K, V> {
@@ -34,4 +31,13 @@ public class CacheService<K, V> {
         map.put(key, newItem);
         return map;
     }
+    public Cache getElementFromCache(Object key)
+    {
+        System.out.println(map.get(key));
+        Cache current = map.get(key);
+        q.remove(current.getKey());
+        q.addFirst((K) current.getKey());
+        return current;
+    }
+
 }
