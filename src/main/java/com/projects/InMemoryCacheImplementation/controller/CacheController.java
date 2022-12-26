@@ -19,8 +19,8 @@ public class CacheController<K, V> {
     }
 
     @GetMapping("/get-value/{key}")
-    public Cache getValueByKey(@PathVariable("key") Object key){
-        return  cacheService.getElementFromCache(key);
+    public V getValueByKey(@PathVariable("key") K key){
+        return (V) cacheService.getElementFromCache(key);
     }
 
 
